@@ -1,6 +1,7 @@
 
 //api 1 === yelp api
 //api 2 === full contact api
+https://api.yelp.com/v3/businesses/search?limit=2&location=Austin&categories=food&term=restaurant
 
 
 //on click query api 1
@@ -14,8 +15,9 @@ var inputText = document.getElementById('input1').value;
 // create vars to hold our API 1components urly, key, inputs
 var ap1 =" ";
 
-var apiKey1 =" ";
+var apiKey1 ="sEEutzNCLWpppnBUy2apjP89foA67xbSdcu7gQyBI74kZE6eEmrME7_VzyaArAEv7OUUljz0mFCQUBCgwypzmhoCXeS46aMFHy97WyJ5i2ABWf9g5K7wpeHPZY4CXXYx";
 
+var yelpClientIdKey = "CsFSQ8tDmgtOESdPPnYaaA";
 // if any 
 var lims1 = " ";
 
