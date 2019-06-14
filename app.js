@@ -97,12 +97,10 @@ https://api.yelp.com/v3/businesses/search?limit=2&location=Austin&categories=foo
 
             // $('#displayHere1').append(name);
             // $('#displayHere1').append(location);
-            // $('#displayHere1').append(price);
-
-   
-           // Prepending the gifDiv to the div in the HTML
-            // $("#displayHere1").append(yelpDiv);
-            console.log("#displayhere"+i);
+            // $('#displayHere1').append(price);   
+        //    // Prepending the gifDiv to the div in the HTML
+        //     // $("#displayHere1").append(yelpDiv);
+        //     console.log("#displayhere"+i);
           }
 
        });      
