@@ -19,3 +19,7 @@ As a developer, I want to know where other developers are working so that I can 
 As a developer meeting a new developer, I want to know information about them before we meet.
 
 As a developer, I want to let other developers know where I am working, so I can learn from them and vice versa. 
+# Thegroup1
+group project 1
+
+luke, molly, sharath, maddie
