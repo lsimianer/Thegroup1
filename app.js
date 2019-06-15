@@ -28,7 +28,7 @@ https://api.yelp.com/v3/businesses/search?limit=2&location=Austin&categories=foo
 
     var field = $('#displayHere1');
 
-
+    
     $.ajax({
        url: myurl,
        headers: {
