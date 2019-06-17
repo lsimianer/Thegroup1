@@ -16,6 +16,21 @@ var time = moment().format('MMM DD HH:MM');
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// pull from firebase to build td
 database.ref().orderByChild("dateAdded").on("child_added", function (snapshot){
     console.log(snapshot.child());
       
