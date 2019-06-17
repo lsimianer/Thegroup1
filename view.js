@@ -12,26 +12,8 @@ firebase.initializeApp(firebaseConfig);
 var database = firebase.database();
 var time = moment().format('MMM DD HH:MM'); 
 
-$("#submit").on("click",function(event){
-    event.preventDefault();
 
-   var firstName = $("#Name").val().trim();
-    var GithubName = $("#GithubName").val().trim();
-    var Where = $("#where").val().trim();
-    var StartTime = $("#startTime").val().trim();
-    var EndTime = $("#endTime").val().trim();
-     var Email = $("#email").val().trim();
 
-    database.ref().push({
-        Name: firstName,
-        githubName: GithubName,
-        Where: Where,
-        StartTime: StartTime,
-        EndTime: EndTime,
-        Email: Email,
-        dateAdded: firebase.database.ServerValue.TIMESTAMP
-    })
-});
 
 
 database.ref().orderByChild("dateAdded").on("child_added", function (snapshot){
@@ -46,16 +28,4 @@ database.ref().orderByChild("dateAdded").on("child_added", function (snapshot){
         snapshot.val().EndTime + "</td>" + "<td>"+
         snapshot.val().Email + "</td>" +                    
         "<td>"+ time + "</td>");
-        
-        
-    //   function displayTime() {
-    //     time = moment().format('HH:mm:ss');
-    //     $('#clock').html(time);
-    //     setTimeout(displayTime, 1000);
-    //     }
-  
-    // $(document).ready(function() {
-    //     displayTime();
-    // });
-
-});
+    });
