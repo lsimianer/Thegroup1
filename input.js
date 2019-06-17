@@ -10,9 +10,10 @@ var firebaseConfig = {
   // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 var database = firebase.database();
-var time = Date.now();
+//format time from ms to desired look
+var time = moment().format('MMM DD HH:MM'); 
 
-
+// on click prevent default && establish vars relationship to input field for push to firebase.
 $("#submit").on("click",function(event){
     event.preventDefault();
 
@@ -34,7 +35,7 @@ $("#submit").on("click",function(event){
     })
 });
 
-
+// append the table with firebase data
 database.ref().orderByChild("dateAdded").on("child_added", function (snapshot){
     console.log(snapshot.child());
       

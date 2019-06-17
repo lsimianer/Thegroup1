@@ -1,7 +1,5 @@
 
-//api 1 === yelp api
-//api 2 === full contact api
-https://api.yelp.com/v3/businesses/search?limit=2&location=Austin&categories=food&term=restaurant
+
 
 
 //on click query api 1
@@ -22,15 +20,32 @@ https://api.yelp.com/v3/businesses/search?limit=2&location=Austin&categories=foo
 // var lims1 = " ";
 
 // function queryAPI1(){
+// var place = $('#place');
+// var city = $('#city');    
+// var myurl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term="+ place.val() +"&location="+ city.val();
+// var field = $('#displayHere1');
 
-    
-    var myurl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=halcyon&location=austin";
 
-    var field = $('#displayHere1');
+// $("#YelpSubmit").on("click",function(event){
+//   event.preventDefault();}
+$( document ).ready(function() {
+  console.log( "ready!" );
+});
 
-    
+
+var api ="https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=";
+var place = $('#place');
+var peice = "&location=";
+var city = $('#city');    
+
+  $("#YelpSubmit").on("click",queryAPI1);
+
+function queryAPI1(){
+  event.preventDefault();
+
+  var url = api + place.val() + peice + city.val();
     $.ajax({
-       url: myurl,
+       url: url,
        headers: {
         'Authorization':'Bearer sEEutzNCLWpppnBUy2apjP89foA67xbSdcu7gQyBI74kZE6eEmrME7_VzyaArAEv7OUUljz0mFCQUBCgwypzmhoCXeS46aMFHy97WyJ5i2ABWf9g5K7wpeHPZY4CXXYx',
     },
@@ -39,6 +54,7 @@ https://api.yelp.com/v3/businesses/search?limit=2&location=Austin&categories=foo
       }).then(function(response) {
         var results = response;
         console.log(response);
+        console.log(url);
         
 
           //  $("#results").append(JSON.stringify(field));
@@ -49,7 +65,7 @@ https://api.yelp.com/v3/businesses/search?limit=2&location=Austin&categories=foo
               console.log(results.businesses[i].url);
               console.log(results.businesses[i].image_url);
 
-            // Creating a div for the gif
+            // Creating a div for the result
             var yelpDiv = $("<div>");
             
             // Storing the result item's rating
@@ -95,16 +111,8 @@ https://api.yelp.com/v3/businesses/search?limit=2&location=Austin&categories=foo
 
 
             $("#displayHere1").append(yelpDiv);
+      }
 
-
-            // $('#displayHere1').append(name);
-            // $('#displayHere1').append(location);
-            // $('#displayHere1').append(price);   
-        //    // Prepending the gifDiv to the div in the HTML
-        //     // $("#displayHere1").append(yelpDiv);
-        //     console.log("#displayhere"+i);
-          }
-
-       });      
-
+  });      
+};
  
