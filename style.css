@@ -1,6 +1,46 @@
-.header {
-    background-image: url("assets/images/coffee-shop-unsplash.jpg");
+.name {
+    margin-left: 10%;
+}
+
+.img {
+    margin-left: 10;
+/* .header {
+    background-image: url("../images/coffee-shop-unsplash.jpg");
+    background-repeat: no-repeat;
+    height: 100vh;
+    background-size: cover;
+} */
+
+/* This is not currently being used ... 
+need to figure out how to darken the image, so the text stands out */
+.overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Paragraph content underneath title */
+#landing-text {
+    margin-top: 110px;
+}
+/* Search and Create buttons */
+.btn {
+    display: inline-block;
+    width: 15%;
+    margin: 1em;
+
+}
+/* Logo in Nav bar */
+.brand-logo {
+    margin-left: 1em;
+}
+/* Right-aligned links in Nav bar */
+#nav-mobile {
+    margin-right: 1em;
+}
+/* Background image and container for page content */
+#landing {
+    background-image: ("assets/images/coffee-shop-unsplash.jpg");
     background-repeat: no-repeat;
     height: 100vh;
     background-size: cover;
 }
+
