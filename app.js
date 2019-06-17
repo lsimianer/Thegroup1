@@ -28,7 +28,7 @@ https://api.yelp.com/v3/businesses/search?limit=2&location=Austin&categories=foo
 
     var field = $('#displayHere1');
 
-
+    
     $.ajax({
        url: myurl,
        headers: {
@@ -55,20 +55,20 @@ https://api.yelp.com/v3/businesses/search?limit=2&location=Austin&categories=foo
             // Storing the result item's rating
             var name = results.businesses[i].name;
             var nameDiv = $("<div>");
-            nameDiv.addClass("name");
+            nameDiv.addClass("card-title");
             nameDiv.text(name)
             // location
             var location = results.businesses[i].location.display_address[0];
             var location2 = results.businesses[i].location.display_address[1]
             var locationDiv = $("<div>");
-            locationDiv.addClass("location");
+            locationDiv.addClass("card-content");
             locationDiv.text(location +" "+ location2);           
             console.log(location,location2);
             
             //price
             var price = results.businesses[i].price;
             var priceDiv = $("<div>");
-            priceDiv.addClass("price");
+            priceDiv.addClass("card-content");
             priceDiv.text(price)
             // business url
             var url = results.businesses[i].url;
@@ -80,6 +80,7 @@ https://api.yelp.com/v3/businesses/search?limit=2&location=Austin&categories=foo
 
             var yelpLink = $("<a>");
             yelpLink.attr("href", url);
+            yelpLink.addClass("card green");
 
             var yelpResult = $("<img width='20%' height='200px'>");
             yelpResult.addClass("img");
