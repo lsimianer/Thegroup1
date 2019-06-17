@@ -82,6 +82,7 @@ https://api.yelp.com/v3/businesses/search?limit=2&location=Austin&categories=foo
             yelpLink.attr("href", url);
 
             var yelpResult = $("<img width='20%' height='200px'>");
+            yelpResult.addClass("img");
           //    // Giving the image tag an src attribute of a proprty pulled off the
             yelpResult.attr("src", results.businesses[i].image_url);           
             yelpLink.append(yelpResult)
