@@ -1,4 +1,6 @@
-$(document).ready(function () {
+
+
+
 
 
     $("#submit2").on("click", function (event) {
@@ -24,10 +26,9 @@ $(document).ready(function () {
                 var followingTag = $("<p>").text("Following: " +response.following);
                 console.log("Following:", response.following);
                 var repoTag = $("<p>").text("Repos:" +response.public_repos);
-                var locationTag= $("<p>").text("Location: " +response.location);
                 console.log(response.public_repos);
                 console.log(response.name);
-                $("#displayHere2").append(userNameTag, nameTag, imgTag, nameTag, viewProfileTag, followersTag, followingTag, repoTag, locationTag);
+                $("#displayHere2").append(userNameTag, nameTag, imgTag, nameTag, viewProfileTag, followersTag, followingTag, repoTag);
             }
             catch (e) {
                 console.log(e);
@@ -39,4 +40,4 @@ $(document).ready(function () {
         });
 
     });
-});
+
