@@ -1,42 +1,42 @@
-$(document).ready(function() {
-    
-    
-    $("#submit2").on("click", function(event) {
+$(document).ready(function () {
+
+
+    $("#submit2").on("click", function (event) {
         event.preventDefault();
         var name = $("#input2").val().trim();
         console.log(name);
         $.ajax({
-            url: "https://api.github.com/search/users?q="+name+"",
-            method: 'GET',
-            client_id: 'Iv1.98d9f81a347e2303',
-            client_secret: 'f52e494216a0e5860426c02c357f80cbaa74df7c',
-        }).then(function(response) {
-            console.log(response);    
-            console.log(response.total_count);
-            for(i=0; i<response.total_count; i++) {
-                if(response.items[i].login === name) {
-                    console.log(response.items[i].login);
-                    console.log(response.items[i].repos_url);
-                    console.log(response.items[i].avatar_url);
-                    console.log(response.items[i].html_url);
-                    //console.log(parseInt(response.items[i].followers));
-                    //console.log(response.items[i].following);
-                    //console.log(response.items[i].public_repos);
-                    break;
-                }       
+        url: "https://api.github.com/users/" + name,
+        method: 'GET',
+        client_id: 'Iv1.98d9f81a347e2303',
+        client_secret: 'f52e494216a0e5860426c02c357f80cbaa74df7c',
+        }).then(function (response) {
+            console.log(response);
+            console.log(response.html_url);
+            console.log()
+            try {
+                var userNameTag = $("<p>").text("Username:" +response.login);
+                var imgTag = $("<img>").attr("src", response.avatar_url);
+                var viewProfileTag = $("<a>").attr("href", response.html_url).text("View Profile");
+                var nameTag = $("<p>").text("Name: " +response.name);
+                var followersTag = $("<p>").text("Followers: " +response.followers);
+                console.log("Followers:", response.followers);
+                var followingTag = $("<p>").text("Following: " +response.following);
+                console.log("Following:", response.following);
+                var repoTag = $("<p>").text("Repos:" +response.public_repos);
+                var locationTag= $("<p>").text("Location: " +response.location);
+                console.log(response.public_repos);
+                console.log(response.name);
+                $("#displayHere2").append(userNameTag, nameTag, imgTag, nameTag, viewProfileTag, followersTag, followingTag, repoTag, locationTag);
             }
-
-            //console.log(response.items[i].repos_url);
-            //console.log(response.items[i].avatar_url);
-            var imgTag = $("<img>").attr("src", response.items[i].avatar_url);
-            var nameTag = $("<p>").text(response.items[i].login);
-            var repoTag = $("<a>").attr("href", response.items[i].repos_url).text("Repos");
-            var viewProfileTag = $("<a>").attr("href", response.items[i].html_url).text("View Profile");
-            
-            $("#displayHere2").append(imgTag, nameTag, repoTag, viewProfileTag);
-            
-            
+            catch (e) {
+                console.log(e);
+                console.log("User not found");
+                var errorTag = $("<p>").text("User not found");
+                $("#displayHere2").append(errorTag);
+            }
+        
         });
-    });
-}); 
 
+    });
+});

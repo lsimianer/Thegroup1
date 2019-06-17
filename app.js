@@ -50,38 +50,57 @@ https://api.yelp.com/v3/businesses/search?limit=2&location=Austin&categories=foo
               console.log(results.businesses[i].image_url);
 
             // Creating a div for the gif
-            var yelpDiv = $("<div>"+i);  
+            var yelpDiv = $("<div>");
+            
             // Storing the result item's rating
             var name = results.businesses[i].name;
+            var nameDiv = $("<div>");
+            nameDiv.addClass("name");
+            nameDiv.text(name)
             // location
-            var location = results.businesses[i].location;
+            var location = results.businesses[i].location.display_address[0];
+            var location2 = results.businesses[i].location.display_address[1]
+            var locationDiv = $("<div>");
+            locationDiv.addClass("location");
+            locationDiv.text(location +" "+ location2);           
+            console.log(location,location2);
+            
             //price
             var price = results.businesses[i].price;
+            var priceDiv = $("<div>");
+            priceDiv.addClass("price");
+            priceDiv.text(price)
             // business url
             var url = results.businesses[i].url;
             //image
             var img = results.businesses[i].image_url;
 
            // Creating an image tag
+            var info = name + price + location;
+
+            var yelpLink = $("<a>");
+            yelpLink.attr("href", url);
+
             var yelpResult = $("<img width='20%' height='200px'>");
           //    // Giving the image tag an src attribute of a proprty pulled off the
             yelpResult.attr("src", results.businesses[i].image_url);           
-
+            yelpLink.append(yelpResult)
             // Appending the paragraph and gifResult we created to the "gifDiv" div we created
-            yelpDiv.append(yelpResult);
-
-            $('#displayHere1').append(name);
-            $('#displayHere1').append(location);
-            $('#displayHere1').append(price);
-            $('#displayHere1').append(url);
+            yelpDiv.append(yelpLink);
+            yelpDiv.append(nameDiv)
+            yelpDiv.append(priceDiv)
+            yelpDiv.append(locationDiv)
 
 
+            $("#displayHere1").append(yelpDiv);
 
 
-   
-          //        // Prepending the gifDiv to the div in the HTML
-                 $("#displayHere1").append(yelpDiv);
-                 console.log("#displayhere"+i);
+            // $('#displayHere1').append(name);
+            // $('#displayHere1').append(location);
+            // $('#displayHere1').append(price);   
+        //    // Prepending the gifDiv to the div in the HTML
+        //     // $("#displayHere1").append(yelpDiv);
+        //     console.log("#displayhere"+i);
           }
 
        });      
