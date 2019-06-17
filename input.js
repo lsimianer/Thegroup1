@@ -13,7 +13,7 @@ var database = firebase.database();
 
 var firstName = "";
 var gitName = "";
-var location = "";
+var myLocation = "";
 var timeStart = "";
 var timeEnd = "";
 var email = "";
@@ -22,10 +22,10 @@ $("#submit").on("click",function(event){
     event.preventDefualt();
 
     firstName = $("#Name").val().trim();
-    gitName = $("#GithubName").val().trim();
-    location = $("#where").val().trim();
-    timeStart = $("#startTime").val().trim();
-    timeEnd = $("#endTime").val().trim();
+    GithubName = $("#GithubName").val().trim();
+    Where = $("#where").val().trim();
+    TimeStart = $("#startTime").val().trim();
+    TimeEnd = $("#endTime").val().trim();
 
     database.ref().push({
         Name: firstName,
@@ -33,33 +33,34 @@ $("#submit").on("click",function(event){
         location: where,
         StartTime: timeStart,
         EndTime: endTime,
+        Email: email,
         dateAdded: firebase.database.ServerValue.TIMESTAMP
     })
 });
+
 
 database.ref().orderByChild("dateAdded").on("child_added", function (snapshot){
     console.log(snapshot.child());
       
         
       $("tbody").append("<tr><td>" + 
-        snapshot.val().name + "</td>" + "<td>" + 
-        snapshot.val().Destination + "</td>" + "<td>" + 
-        snapshot.val().Frequency + "</td>" + "<td>" +
-        snapshot.val().NextArrival + "</td>" + 
-        "<td>" + tMinutesTillTrain  + "</td>" );
-  
+        snapshot.val().Name + "</td>" + "<td>" + 
+        snapshot.val().githubName + "</td>" + "<td>" + 
+        snapshot.val().location + "</td>" + "<td>" + 
+        snapshot.val().StartTime + "</td>" + "<td>" +
+        snapshot.val().EndTime + "</td>" + 
+        "<td>" + dateAdded  + "</td>" );
         
-  });
   
+    //   function displayTime() {
+    //   var time = moment().format('HH:mm:ss');
+    //   $('#clock').html(time);
+    //   setTimeout(displayTime, 1000);
+    // }
   
-  function displayTime() {
-      var time = moment().format('HH:mm:ss');
-      $('#clock').html(time);
-      setTimeout(displayTime, 1000);
-  }
-  
-  $(document).ready(function() {
-      displayTime();
-      // dateDifference();
-  });
+    // // $(document).ready(function() {
+    //     displayTime();
+    //     dateDifference();
+    //   });
 
+});
