@@ -73,18 +73,27 @@
                       </div>
                       <a class="waves-effect waves-light btn">Submit</a> -->
                   <!-- </form> -->
-                  <form>
-                      <div class="input-field">
-                          <input id="userInput" type="search" required>
-                          <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                          <!-- <i class="material-icons">close</i> -->
-                      </div>
-                  </form>
+                <form>
+                    <div class="input-field">
+                        <input id="place" type="search" placeholder="Yelp search:what"    required>
+                        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                        
+                        <input id="city" type="search" placeholder="Yelp search:Where"    required>
+                        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                        
+                        <!-- <i class="material-icons">close</i> -->
+                    </div>
+                    <button id="YelpSubmit"></button>
+  
+                </form>
           </div>
       </div>
       <!-- Data display -->
       <div class="row">
           <div id="data-display"></div>
+          <div id="displayHere1">
+              <!-- yelp results append here -->
+          </div>
       </div>
   </div>
 

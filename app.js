@@ -28,6 +28,9 @@
 
 // $("#YelpSubmit").on("click",function(event){
 //   event.preventDefault();}
+$( document ).ready(function() {
+  console.log( "ready!" );
+});
 
 
 var api ="https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=";
@@ -35,9 +38,9 @@ var place = $('#place');
 var peice = "&location=";
 var city = $('#city');    
 
-  $("#YelpSubmit").on("click",queryAPI1(event));
+  $("#YelpSubmit").on("click",queryAPI1);
 
-function queryAPI1(event){
+function queryAPI1(){
   event.preventDefault();
 
   var url = api + place.val() + peice + city.val();
@@ -51,7 +54,7 @@ function queryAPI1(event){
       }).then(function(response) {
         var results = response;
         console.log(response);
-        console.log(myurl);
+        console.log(url);
         
 
           //  $("#results").append(JSON.stringify(field));
