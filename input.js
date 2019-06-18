@@ -38,7 +38,7 @@ $("#submit").on("click",function(event){
 // append the table with firebase data
 database.ref().orderByChild("dateAdded").on("child_added", function (snapshot){
     console.log(snapshot.child());
-      
+      console.log(snapshot.val())
         
       $("tbody").append("<tr><td>" + 
         snapshot.val().Name + "</td>" + "<td>" + 
@@ -47,17 +47,6 @@ database.ref().orderByChild("dateAdded").on("child_added", function (snapshot){
         snapshot.val().StartTime + "</td>" + "<td>" +
         snapshot.val().EndTime + "</td>" + "<td>"+
         snapshot.val().Email + "</td>" +                    
-        "<td>"+ time + "</td>");
+        "<td>"+ moment(snapshot.val().dateAdded, "x").format("MMM/DD/YYYY HH:mm") + "</td>");       
         
-        
-    //   function displayTime() {
-    //     time = moment().format('HH:mm:ss');
-    //     $('#clock').html(time);
-    //     setTimeout(displayTime, 1000);
-    //     }
-  
-    // $(document).ready(function() {
-    //     displayTime();
-    // });
-
 });

@@ -44,6 +44,7 @@ database.ref().orderByChild("dateAdded").on("child_added", function (snapshot){
   function queryAPI1(){
     $("#YelpResultsDisplay").empty();
     event.preventDefault();
+
   
     var url = api + place.val() + peice + city.val();
       $.ajax({
@@ -87,8 +88,9 @@ database.ref().orderByChild("dateAdded").on("child_added", function (snapshot){
             //price
             var price = results.businesses[i].price;
             var priceDiv = $("<div>");
-            priceDiv.addClass("center-align");
+            priceDiv.addClass("card-title center-align");
             priceDiv.text(price)
+            priceDiv.append(nameDiv);
             // business url
             var url = results.businesses[i].url;
             //image
