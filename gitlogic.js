@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).ready(function() {
 
 
     $("#submit2").on("click", function (event) {
@@ -13,7 +13,8 @@ $(document).ready(function () {
         }).then(function (response) {
             console.log(response);
             console.log(response.html_url);
-            console.log()
+            console.log();
+            
             try {
                 var userNameTag = $("<p>").text("Username:" +response.login);
                 var imgTag = $("<img>").attr("src", response.avatar_url);
@@ -27,15 +28,14 @@ $(document).ready(function () {
                 var locationTag= $("<p>").text("Location: " +response.location);
                 console.log(response.public_repos);
                 console.log(response.name);
-                $("#displayHere2").append(userNameTag, nameTag, imgTag, nameTag, viewProfileTag, followersTag, followingTag, repoTag, locationTag);
+                $("#profile").append(userNameTag, nameTag, imgTag, nameTag, viewProfileTag, followersTag, followingTag, repoTag, locationTag);
             }
             catch (e) {
                 console.log(e);
                 console.log("User not found");
                 var errorTag = $("<p>").text("User not found");
-                $("#displayHere2").append(errorTag);
+                $("#profile").append(errorTag);
             }
-        
         });
 
     });
