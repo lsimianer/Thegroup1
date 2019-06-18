@@ -10,35 +10,32 @@ var firebaseConfig = {
   // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 var database = firebase.database();
+//format time from ms to desired look
+var time = moment().format('MMM DD HH:MM'); 
 
-var firstName = "";
-var gitName = "";
-var myLocation = "";
-var timeStart = "";
-var timeEnd = "";
-var email = "";
-
+// on click prevent default && establish vars relationship to input field for push to firebase.
 $("#submit").on("click",function(event){
-    event.preventDefualt();
+    event.preventDefault();
 
-    firstName = $("#Name").val().trim();
-    GithubName = $("#GithubName").val().trim();
-    Where = $("#where").val().trim();
-    TimeStart = $("#startTime").val().trim();
-    TimeEnd = $("#endTime").val().trim();
+   var firstName = $("#Name").val().trim();
+    var GithubName = $("#GithubName").val().trim();
+    var Where = $("#where").val().trim();
+    var StartTime = $("#startTime").val().trim();
+    var EndTime = $("#endTime").val().trim();
+     var Email = $("#email").val().trim();
 
     database.ref().push({
         Name: firstName,
-        githubName: gitName,
-        location: where,
-        StartTime: timeStart,
-        EndTime: endTime,
-        Email: email,
+        githubName: GithubName,
+        Where: Where,
+        StartTime: StartTime,
+        EndTime: EndTime,
+        Email: Email,
         dateAdded: firebase.database.ServerValue.TIMESTAMP
     })
 });
 
-
+// append the table with firebase data
 database.ref().orderByChild("dateAdded").on("child_added", function (snapshot){
     console.log(snapshot.child());
       
@@ -46,21 +43,21 @@ database.ref().orderByChild("dateAdded").on("child_added", function (snapshot){
       $("tbody").append("<tr><td>" + 
         snapshot.val().Name + "</td>" + "<td>" + 
         snapshot.val().githubName + "</td>" + "<td>" + 
-        snapshot.val().location + "</td>" + "<td>" + 
+        snapshot.val().Where + "</td>" + "<td>" + 
         snapshot.val().StartTime + "</td>" + "<td>" +
-        snapshot.val().EndTime + "</td>" + 
-        "<td>" + dateAdded  + "</td>" );
+        snapshot.val().EndTime + "</td>" + "<td>"+
+        snapshot.val().Email + "</td>" +                    
+        "<td>"+ time + "</td>");
         
-  
+        
     //   function displayTime() {
-    //   var time = moment().format('HH:mm:ss');
-    //   $('#clock').html(time);
-    //   setTimeout(displayTime, 1000);
-    // }
+    //     time = moment().format('HH:mm:ss');
+    //     $('#clock').html(time);
+    //     setTimeout(displayTime, 1000);
+    //     }
   
-    // // $(document).ready(function() {
+    // $(document).ready(function() {
     //     displayTime();
-    //     dateDifference();
-    //   });
+    // });
 
 });

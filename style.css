@@ -4,12 +4,17 @@
 
 .img {
     margin-left: 10;
+}
 /* .header {
     background-image: url("../images/coffee-shop-unsplash.jpg");
     background-repeat: no-repeat;
     height: 100vh;
     background-size: cover;
 } */
+
+h5{
+
+}
 
 /* This is not currently being used ... 
 need to figure out how to darken the image, so the text stands out */
@@ -38,9 +43,13 @@ need to figure out how to darken the image, so the text stands out */
 }
 /* Background image and container for page content */
 #landing {
-    background-image: ("assets/images/coffee-shop-unsplash.jpg");
+    background-image: url("assets/images/coffee-shop-unsplash.jpg");
+    opacity: 1;
     background-repeat: no-repeat;
     height: 100vh;
     background-size: cover;
 }
+
+
+
 

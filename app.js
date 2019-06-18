@@ -1,7 +1,5 @@
 
-//api 1 === yelp api
-//api 2 === full contact api
-https://api.yelp.com/v3/businesses/search?limit=2&location=Austin&categories=food&term=restaurant
+
 
 
 //on click query api 1
@@ -22,15 +20,32 @@ https://api.yelp.com/v3/businesses/search?limit=2&location=Austin&categories=foo
 // var lims1 = " ";
 
 // function queryAPI1(){
+// var place = $('#place');
+// var city = $('#city');    
+// var myurl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term="+ place.val() +"&location="+ city.val();
+// var field = $('#displayHere1');
 
-    
-    var myurl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=halcyon&location=austin";
 
-    var field = $('#displayHere1');
+// $("#YelpSubmit").on("click",function(event){
+//   event.preventDefault();}
+$( document ).ready(function() {
+  console.log( "ready!" );
+});
 
-    
+
+var api ="https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=";
+var place = $('#place');
+var peice = "&location=";
+var city = $('#city');    
+
+  $("#YelpSubmit").on("click",queryAPI1);
+
+function queryAPI1(){
+  event.preventDefault();
+
+  var url = api + place.val() + peice + city.val();
     $.ajax({
-       url: myurl,
+       url: url,
        headers: {
         'Authorization':'Bearer sEEutzNCLWpppnBUy2apjP89foA67xbSdcu7gQyBI74kZE6eEmrME7_VzyaArAEv7OUUljz0mFCQUBCgwypzmhoCXeS46aMFHy97WyJ5i2ABWf9g5K7wpeHPZY4CXXYx',
     },
@@ -39,6 +54,7 @@ https://api.yelp.com/v3/businesses/search?limit=2&location=Austin&categories=foo
       }).then(function(response) {
         var results = response;
         console.log(response);
+        console.log(url);
         
 
           //  $("#results").append(JSON.stringify(field));
@@ -49,26 +65,27 @@ https://api.yelp.com/v3/businesses/search?limit=2&location=Austin&categories=foo
               console.log(results.businesses[i].url);
               console.log(results.businesses[i].image_url);
 
-            // Creating a div for the gif
+            // Creating a div for the result
             var yelpDiv = $("<div>");
+            yelpDiv.addClass("col s12 m12 l6 card grey lighten-5");
             
             // Storing the result item's rating
             var name = results.businesses[i].name;
             var nameDiv = $("<div>");
-            nameDiv.addClass("card-title");
+            nameDiv.addClass("card-title center-align");
             nameDiv.text(name)
             // location
             var location = results.businesses[i].location.display_address[0];
             var location2 = results.businesses[i].location.display_address[1]
-            var locationDiv = $("<div>");
-            locationDiv.addClass("card-content");
+            var locationDiv = $("<p>");
+            locationDiv.addClass("center-align");
             locationDiv.text(location +" "+ location2);           
             console.log(location,location2);
             
             //price
             var price = results.businesses[i].price;
             var priceDiv = $("<div>");
-            priceDiv.addClass("card-content");
+            priceDiv.addClass("center-align");
             priceDiv.text(price)
             // business url
             var url = results.businesses[i].url;
@@ -80,9 +97,9 @@ https://api.yelp.com/v3/businesses/search?limit=2&location=Austin&categories=foo
 
             var yelpLink = $("<a>");
             yelpLink.attr("href", url);
-            yelpLink.addClass("card green");
+            // yelpLink.addClass("card green");
 
-            var yelpResult = $("<img width='20%' height='200px'>");
+            var yelpResult = $("<img width='75%' height='200px'>");
             yelpResult.addClass("img");
           //    // Giving the image tag an src attribute of a proprty pulled off the
             yelpResult.attr("src", results.businesses[i].image_url);           
@@ -95,16 +112,8 @@ https://api.yelp.com/v3/businesses/search?limit=2&location=Austin&categories=foo
 
 
             $("#displayHere1").append(yelpDiv);
+      }
 
-
-            // $('#displayHere1').append(name);
-            // $('#displayHere1').append(location);
-            // $('#displayHere1').append(price);   
-        //    // Prepending the gifDiv to the div in the HTML
-        //     // $("#displayHere1").append(yelpDiv);
-        //     console.log("#displayhere"+i);
-          }
-
-       });      
-
+  });      
+};
  

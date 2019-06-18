@@ -1,4 +1,6 @@
-$(document).ready(function () {
+
+
+
 
 
     $("#submit2").on("click", function (event) {
