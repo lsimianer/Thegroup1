@@ -85,12 +85,14 @@ database.ref().orderByChild("dateAdded").on("child_added", function (snapshot){
             locationDiv.addClass("center-align");
             console.log("HELLO");
             console.log(location, location2)
-            locationDiv.html(location +" "+ location2);  
-
+            locationDiv.html(location +" "+ location2); 
+            // business url
+            var url = results.businesses[i].url;
+              //clickable yelp trademark
             var yelpLogoDiv = $("<div>");
             yelpLogoDiv.addClass("center-align");
-            yelpLogoDiv.html("<a href=https://yelp.com/>"+" <img width=60 src=https://i.ibb.co/3zvxgFD/Yelp-trademark-RGB.png>"+" </a>"); 
-            // yelpLogoDiv.attr("href","https://www.yelp.com/");
+            yelpLogoDiv.html( "<img width=60 src=https://i.ibb.co/3zvxgFD/Yelp-trademark-RGB.png>"); 
+            yelpLogoDiv.attr("href", url);
 
 
 
@@ -104,8 +106,6 @@ database.ref().orderByChild("dateAdded").on("child_added", function (snapshot){
             priceDiv.text(price)
             priceDiv.append(nameDiv);
 
-            // business url
-            var url = results.businesses[i].url;
             //image
             var img = results.businesses[i].image_url;
 
@@ -113,20 +113,22 @@ database.ref().orderByChild("dateAdded").on("child_added", function (snapshot){
             var info = name + price + location;
 
             var yelpLink = $("<a>");
-            yelpLink.attr("href", url);
+            yelpLink.attr("href", url+'target="_blank"');
             // yelpLink.addClass("card green");
 
             var yelpResult = $("<img width='100%' height='200px'>");
             yelpResult.addClass("img");
           //    // Giving the image tag an src attribute of a proprty pulled off the
             yelpResult.attr("src", results.businesses[i].image_url);           
-            yelpLink.append(yelpResult)
+            yelpLink.append(yelpResult);
+            yelpLink.append(yelpLogoDiv);
+
             // Appending the paragraph and gifResult we created to the "gifDiv" div we created
             yelpDiv.append(yelpLink);
             yelpDiv.append(nameDiv);
             yelpDiv.append(priceDiv);
             yelpDiv.append(locationDiv);
-            yelpDiv.append(yelpLogoDiv);
+            // yelpDiv.append(yelpLogoDiv);
   
             $("#YelpResultsDisplay").append(yelpDiv);
         }
@@ -182,6 +184,11 @@ database.ref().orderByChild("dateAdded").on("child_added", function (snapshot){
     });
 
 });
+
+
+
+
+
 
 
 
