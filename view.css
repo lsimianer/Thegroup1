@@ -1,0 +1,12 @@
+/* Logo in Nav bar */
+.brand-logo {
+    margin-left: 1em;
+}
+/* Right-aligned links in Nav bar */
+#nav-mobile {
+    margin-right: 1em;
+}
+/* Centers table (On Going Events) headers */
+th {
+    text-align: center;
+}
