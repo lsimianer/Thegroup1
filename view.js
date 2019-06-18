@@ -80,10 +80,15 @@ database.ref().orderByChild("dateAdded").on("child_added", function (snapshot){
             // location
             var location = results.businesses[i].location.display_address[0];
             var location2 = results.businesses[i].location.display_address[1]
-            var locationDiv = $("<p>");
+            var locationDiv = $("<div>");
             locationDiv.addClass("center-align");
             locationDiv.text(location +" "+ location2);           
             console.log(location,location2);
+
+            var yelpLogoDiv = $("<div>");
+            yelpLogoDiv.addClass("center-align");
+            yelpLogoDiv.html("<a href=https://yelp.com/>"+" <img width=60 src=https://i.ibb.co/3zvxgFD/Yelp-trademark-RGB.png>"+" </a>"); 
+            // yelpLogoDiv.attr("href","https://www.yelp.com/");
             
             //price
             var price = results.businesses[i].price;
@@ -110,9 +115,10 @@ database.ref().orderByChild("dateAdded").on("child_added", function (snapshot){
             yelpLink.append(yelpResult)
             // Appending the paragraph and gifResult we created to the "gifDiv" div we created
             yelpDiv.append(yelpLink);
-            yelpDiv.append(nameDiv)
-            yelpDiv.append(priceDiv)
-            yelpDiv.append(locationDiv)
+            yelpDiv.append(nameDiv);
+            yelpDiv.append(priceDiv);
+            yelpDiv.append(locationDiv);
+            yelpDiv.append(yelpLogoDiv);
   
   
               $("#YelpResultsDisplay").append(yelpDiv);
@@ -146,7 +152,7 @@ database.ref().orderByChild("dateAdded").on("child_added", function (snapshot){
         console.log(response.html_url);
         console.log()
         try {
-            var userNameTag = $("<p>").text("Username:" +response.login);
+            var userNameTag = $("<p>").text("Username: " +response.login);
             var imgTag = $("<img>").attr("src", response.avatar_url);
             var viewProfileTag = $("<a>").attr("href", response.html_url).text("View Profile");
             var nameTag = $("<p>").text("Name: " +response.name);
@@ -154,7 +160,7 @@ database.ref().orderByChild("dateAdded").on("child_added", function (snapshot){
             console.log("Followers:", response.followers);
             var followingTag = $("<p>").text("Following: " +response.following);
             console.log("Following:", response.following);
-            var repoTag = $("<p>").text("Repos:" +response.public_repos);
+            var repoTag = $("<p>").text("Repos: " +response.public_repos);
             console.log(response.public_repos);
             console.log(response.name);
             $("#GithubResultsDisplay").append(userNameTag, nameTag, imgTag, nameTag, viewProfileTag, followersTag, followingTag, repoTag);
