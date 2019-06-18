@@ -36,12 +36,13 @@ database.ref().orderByChild("dateAdded").on("child_added", function (snapshot){
   
   var api ="https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=";
   var place = $('#place');
-  var peice = "&location=";
+  var peice = "&limit=6&location=";
   var city = $('#city');    
   
     $("#YelpSubmit").on("click",queryAPI1);
   
   function queryAPI1(){
+    $("#YelpResultsDisplay").empty();
     event.preventDefault();
   
     var url = api + place.val() + peice + city.val();
@@ -68,7 +69,7 @@ database.ref().orderByChild("dateAdded").on("child_added", function (snapshot){
 
             // Creating a div for the result
             var yelpDiv = $("<div>");
-            yelpDiv.addClass("col s12 m12 l6 card grey lighten-5");
+            yelpDiv.addClass("col s12 m12 l4 card medium grey lighten-5");
             
             // Storing the result item's rating
             var name = results.businesses[i].name;
@@ -100,7 +101,7 @@ database.ref().orderByChild("dateAdded").on("child_added", function (snapshot){
             yelpLink.attr("href", url);
             // yelpLink.addClass("card green");
 
-            var yelpResult = $("<img width='75%' height='200px'>");
+            var yelpResult = $("<img width='100%' height='200px'>");
             yelpResult.addClass("img");
           //    // Giving the image tag an src attribute of a proprty pulled off the
             yelpResult.attr("src", results.businesses[i].image_url);           
@@ -126,9 +127,13 @@ database.ref().orderByChild("dateAdded").on("child_added", function (snapshot){
 
 
   $("#YelpSubmit").on("click", function (event) {
+    $("#GithubResultsDisplay").empty();
     event.preventDefault();
     var name = $("#GithubInput").val().trim();
     console.log(name);
+    $("#place").val("");
+    $("#city").val("");
+    $("#GithubInput").val("");
     $.ajax({
     url: "https://api.github.com/users/" + name,
     method: 'GET',
