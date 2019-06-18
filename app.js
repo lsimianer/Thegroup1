@@ -67,24 +67,25 @@ function queryAPI1(){
 
             // Creating a div for the result
             var yelpDiv = $("<div>");
+            yelpDiv.addClass("col s12 m12 l6 card grey lighten-5");
             
             // Storing the result item's rating
             var name = results.businesses[i].name;
             var nameDiv = $("<div>");
-            nameDiv.addClass("card-title");
+            nameDiv.addClass("card-title center-align");
             nameDiv.text(name)
             // location
             var location = results.businesses[i].location.display_address[0];
             var location2 = results.businesses[i].location.display_address[1]
-            var locationDiv = $("<div>");
-            locationDiv.addClass("card-content");
+            var locationDiv = $("<p>");
+            locationDiv.addClass("center-align");
             locationDiv.text(location +" "+ location2);           
             console.log(location,location2);
             
             //price
             var price = results.businesses[i].price;
             var priceDiv = $("<div>");
-            priceDiv.addClass("card-content");
+            priceDiv.addClass("center-align");
             priceDiv.text(price)
             // business url
             var url = results.businesses[i].url;
@@ -96,9 +97,9 @@ function queryAPI1(){
 
             var yelpLink = $("<a>");
             yelpLink.attr("href", url);
-            yelpLink.addClass("card green");
+            // yelpLink.addClass("card green");
 
-            var yelpResult = $("<img width='20%' height='200px'>");
+            var yelpResult = $("<img width='75%' height='200px'>");
             yelpResult.addClass("img");
           //    // Giving the image tag an src attribute of a proprty pulled off the
             yelpResult.attr("src", results.businesses[i].image_url);           
