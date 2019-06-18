@@ -33,7 +33,7 @@
     <!-- Nav Bar -->
     <nav class="nav-extended">
             <div class="nav-wrapper orange darken-4">
-              <a href="#" class="brand-logo">DevNet</a>
+              <a href="index.html" class="brand-logo"><img src="assets/images/white-logo.png" height="60px" ></a>
               <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
               <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a href="input.html">Create Event</a></li>
@@ -62,32 +62,39 @@
           <div id="test4" class="col s12">Test 4</div> -->
 
     <!-- Table for Current Events-->
-    <container id="Event">
-        <h3>Ongoing Events</h3>
-            <table id="eventTimes">
-                <thead>
-                    <tr>
-                        <th>Name</th> 
-                        <th> Github Username</th>
-                        <th>Where</th> 
-                        <th>Start Time</th> 
-                        <th>End Time</th> 
-                        <th>Email</th>
-                        <th>Date Added</th>
-                    </tr>
-                </thead>
-                <tbody>
-                  
-                </tbody>
-            </table>
-    </container>
+    <div class="container">
+            <div class="row">
+              <div class="col s12 m4 l8">
+                  <div id="Event">
+                      <h3>Ongoing Events</h3>
+                          <table id="eventTimes">
+                                <thead>
+                                  <tr>
+                                      <th>Name</th> 
+                                      <th>Github Username</th>
+                                      <th>Where</th> 
+                                      <th>Start Time</th> 
+                                      <th>End Time</th> 
+                                      <th>Email</th>
+                                      <th>Date Added</th>
+                                  </tr>
+                                </thead>
+                                <tbody>                              
+                                </tbody>
+                            </table>
+                    </div>
+                </div>
+            </div>
+    </div>
+                
+    
 
     <div class="container">
         <!-- Input Form -->
         <div class="row">
             <div class="col s12 m4 l8">
-                <h3>Create</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam fuga ex aut quae praesentium facere non, necessitatibus, mollitia debitis vero aliquid asperiores. Voluptatum animi accusamus dolorum consequatur atque, magni totam.Quam aperiam sunt atque labore nemo. Tempore fuga eum ex et voluptatibus, enim temporibus perferendis illo rem soluta, veritatis similique ratione nisi eos esse quasi odit quisquam odio laborum vel.</p>
+                <h3>Create an event</h3>
+                <p>Fill in the fields below to create an event. Your Github name is required to allow other users to know who they're meeting and what they can learn from you or contribute!</p>
                     <form>
                         <div class="input-field">
                             <input type="text" id="Name">
