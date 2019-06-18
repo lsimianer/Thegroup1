@@ -8,9 +8,9 @@
 }
 /* Centers table (On Going Events) headers */
 th {
-    text-align: center;
+    text-align: left;
 }
 
-img {
+/* img {
     margin-left: 13%;
-}
+} */
