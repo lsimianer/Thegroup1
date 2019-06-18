@@ -16,6 +16,22 @@ var time = moment().format('MMM DD HH:MM');
 $( document ).ready(function() {
     console.log( "ready!" );
   });
+
+  // begin firebase js
+// pull from firebase to build td
+database.ref().orderByChild("dateAdded").on("child_added", function (snapshot){
+  console.log(snapshot.child());
+    
+      
+    $("tbody").append("<tr><td>" + 
+      snapshot.val().Name + "</td>" + "<td>" + 
+      snapshot.val().githubName + "</td>" + "<td>" + 
+      snapshot.val().Where + "</td>" + "<td>" + 
+      snapshot.val().StartTime + "</td>" + "<td>" +
+      snapshot.val().EndTime + "</td>" + "<td>"+
+      snapshot.val().Email + "</td>" +                    
+      "<td>"+ time + "</td>");
+  });
   
   
   var api ="https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=";
@@ -43,56 +59,57 @@ $( document ).ready(function() {
           
   
             //  $("#results").append(JSON.stringify(field));
-              for (var i = 0; i < results.businesses.length; i++) { 
-                console.log(results.businesses[i].name);
-                console.log(results.businesses[i].location);
-                console.log(results.businesses[i].price);
-                console.log(results.businesses[i].url);
-                console.log(results.businesses[i].image_url);
-  
-              // Creating a div for the result
-              var yelpDiv = $("<div>");
-              
-              // Storing the result item's rating
-              var name = results.businesses[i].name;
-              var nameDiv = $("<div>");
-              nameDiv.addClass("card-title");
-              nameDiv.text(name)
-              // location
-              var location = results.businesses[i].location.display_address[0];
-              var location2 = results.businesses[i].location.display_address[1]
-              var locationDiv = $("<div>");
-              locationDiv.addClass("card-content");
-              locationDiv.text(location +" "+ location2);           
-              console.log(location,location2);
-              
-              //price
-              var price = results.businesses[i].price;
-              var priceDiv = $("<div>");
-              priceDiv.addClass("card-content");
-              priceDiv.text(price)
-              // business url
-              var url = results.businesses[i].url;
-              //image
-              var img = results.businesses[i].image_url;
-  
-             // Creating an image tag
-              var info = name + price + location;
-  
-              var yelpLink = $("<a>");
-              yelpLink.attr("href", url);
-              yelpLink.addClass("card green");
-  
-              var yelpResult = $("<img width='20%' height='200px'>");
-              yelpResult.addClass("img");
-            //    // Giving the image tag an src attribute of a proprty pulled off the
-              yelpResult.attr("src", results.businesses[i].image_url);           
-              yelpLink.append(yelpResult)
-              // Appending the paragraph and gifResult we created to the "gifDiv" div we created
-              yelpDiv.append(yelpLink);
-              yelpDiv.append(nameDiv)
-              yelpDiv.append(priceDiv)
-              yelpDiv.append(locationDiv)
+            for (var i = 0; i < results.businesses.length; i++) { 
+              console.log(results.businesses[i].name);
+              console.log(results.businesses[i].location);
+              console.log(results.businesses[i].price);
+              console.log(results.businesses[i].url);
+              console.log(results.businesses[i].image_url);
+
+            // Creating a div for the result
+            var yelpDiv = $("<div>");
+            yelpDiv.addClass("col s12 m12 l6 card grey lighten-5");
+            
+            // Storing the result item's rating
+            var name = results.businesses[i].name;
+            var nameDiv = $("<div>");
+            nameDiv.addClass("card-title center-align");
+            nameDiv.text(name)
+            // location
+            var location = results.businesses[i].location.display_address[0];
+            var location2 = results.businesses[i].location.display_address[1]
+            var locationDiv = $("<p>");
+            locationDiv.addClass("center-align");
+            locationDiv.text(location +" "+ location2);           
+            console.log(location,location2);
+            
+            //price
+            var price = results.businesses[i].price;
+            var priceDiv = $("<div>");
+            priceDiv.addClass("center-align");
+            priceDiv.text(price)
+            // business url
+            var url = results.businesses[i].url;
+            //image
+            var img = results.businesses[i].image_url;
+
+           // Creating an image tag
+            var info = name + price + location;
+
+            var yelpLink = $("<a>");
+            yelpLink.attr("href", url);
+            // yelpLink.addClass("card green");
+
+            var yelpResult = $("<img width='75%' height='200px'>");
+            yelpResult.addClass("img");
+          //    // Giving the image tag an src attribute of a proprty pulled off the
+            yelpResult.attr("src", results.businesses[i].image_url);           
+            yelpLink.append(yelpResult)
+            // Appending the paragraph and gifResult we created to the "gifDiv" div we created
+            yelpDiv.append(yelpLink);
+            yelpDiv.append(nameDiv)
+            yelpDiv.append(priceDiv)
+            yelpDiv.append(locationDiv)
   
   
               $("#YelpResultsDisplay").append(yelpDiv);
@@ -108,7 +125,7 @@ $( document ).ready(function() {
 
 
 
-  $("#GithubSubmit").on("click", function (event) {
+  $("#YelpSubmit").on("click", function (event) {
     event.preventDefault();
     var name = $("#GithubInput").val().trim();
     console.log(name);
@@ -152,18 +169,3 @@ $( document ).ready(function() {
 
 
 
-// begin firebase js
-// pull from firebase to build td
-database.ref().orderByChild("dateAdded").on("child_added", function (snapshot){
-    console.log(snapshot.child());
-      
-        
-      $("tbody").append("<tr><td>" + 
-        snapshot.val().Name + "</td>" + "<td>" + 
-        snapshot.val().githubName + "</td>" + "<td>" + 
-        snapshot.val().Where + "</td>" + "<td>" + 
-        snapshot.val().StartTime + "</td>" + "<td>" +
-        snapshot.val().EndTime + "</td>" + "<td>"+
-        snapshot.val().Email + "</td>" +                    
-        "<td>"+ time + "</td>");
-    });
