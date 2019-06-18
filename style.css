@@ -45,6 +45,7 @@
 
 #searchBTN:hover {
     border-color: rgb(237, 240, 243);
+    color: orangered;
 }
 #searchP{
     overflow: hidden;
