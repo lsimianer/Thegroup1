@@ -24,12 +24,10 @@ $(document).ready(function () {
             for(i=0; i<searchResponse.total_count; i++) {
                 if(searchResponse.items[i].login === name) {
                 console.log(searchResponse.items[i].login);
+                
                 }
-                }
+            }
            
-            try {
-                var catchError = searchResponse.items[i].avatar_url;
-                console.log(catchError);
                 //displays the username
                 var userNameTag = $("<p>").text("Username: " +response.login);
                 //displays the photo
@@ -51,7 +49,9 @@ $(document).ready(function () {
                 console.log(response.name);
                 //showing it on the page
                 $("#displayHere2").append(userNameTag, imgTag, nameTag, viewProfileTag, followersTag, followingTag, repoTag, locationTag);
-
+            try {    
+                var catchError = searchResponse.items[i].avatar_url;
+                console.log(catchError);
             }
             //displays user not found if user name is not valid
             catch (e) {
@@ -60,7 +60,6 @@ $(document).ready(function () {
                 var errorTag = $("<p>").text("User not found");
                 $("#displayHere2").html(errorTag);   
             }
-    
             });
         });
         });
