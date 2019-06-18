@@ -131,6 +131,9 @@ database.ref().orderByChild("dateAdded").on("child_added", function (snapshot){
     event.preventDefault();
     var name = $("#GithubInput").val().trim();
     console.log(name);
+    $("#place").val("");
+    $("#city").val("");
+    $("#GithubInput").val("");
     $.ajax({
     url: "https://api.github.com/users/" + name,
     method: 'GET',
