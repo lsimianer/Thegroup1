@@ -33,87 +33,18 @@ $( document ).ready(function() {
 });
 
 
-var api ="https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=";
-var place = $('#place');
-var peice = "&location=";
-var city = $('#city');    
+particlesJS("particles-js", {"particles":{"number":{"value":580,"density":{"enable":true,"value_area":800}},"color":{"value":"#dd2828"},"shape":{"type":"circle","stroke":{"width":0,"color":"#dd2828"},"polygon":{"nb_sides":5},"image":{"src":"img/github.svg","width":100,"height":100}},"opacity":{"value":0.5,"random":false,"anim":{"enable":false,"speed":1,"opacity_min":0.1,"sync":false}},"size":{"value":3,"random":true,"anim":{"enable":false,"speed":40,"size_min":0.1,"sync":false}},"line_linked":{"enable":true,"distance":150,"color":"#dd2828","opacity":0.4,"width":1},"move":{"enable":true,"speed":6,"direction":"none","random":false,"straight":false,"out_mode":"out","bounce":false,"attract":{"enable":false,"rotateX":600,"rotateY":1200}}},"interactivity":{"detect_on":"canvas","events":{"onhover":{"enable":true,"mode":"grab"},"onclick":{"enable":true,"mode":"push"},"resize":true},"modes":{"grab":{"distance":400,"line_linked":{"opacity":1}},"bubble":{"distance":400,"size":40,"duration":2,"opacity":8,"speed":3},"repulse":{"distance":200,"duration":0.4},"push":{"particles_nb":4},"remove":{"particles_nb":2}}},"retina_detect":true});
+var count_particles, stats, update; stats = new Stats; stats.setMode(0); stats.domElement.style.position = 'absolute'; stats.domElement.style.left = '0px'; stats.domElement.style.top = '0px';
+//  document.body.appendChild(stats.domElement); 
+ count_particles = document.querySelector('.js-count-particles'); 
+update = function() { stats.begin(); stats.end(); if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) { count_particles.innerText = window.pJSDom[0].pJS.particles.array.length; } 
+requestAnimationFrame(update); }; 
+// requestAnimationFrame(update);;
 
-  $("#YelpSubmit").on("click",queryAPI1);
-
-function queryAPI1(){
-  event.preventDefault();
-
-  var url = api + place.val() + peice + city.val();
-    $.ajax({
-       url: url,
-       headers: {
-        'Authorization':'Bearer sEEutzNCLWpppnBUy2apjP89foA67xbSdcu7gQyBI74kZE6eEmrME7_VzyaArAEv7OUUljz0mFCQUBCgwypzmhoCXeS46aMFHy97WyJ5i2ABWf9g5K7wpeHPZY4CXXYx',
-    },
-       method: 'GET',
-       dataType: 'json',
-      }).then(function(response) {
-        var results = response;
-        console.log(response);
-        console.log(url);
-        
-
-          //  $("#results").append(JSON.stringify(field));
-            for (var i = 0; i < results.businesses.length; i++) { 
-              console.log(results.businesses[i].name);
-              console.log(results.businesses[i].location);
-              console.log(results.businesses[i].price);
-              console.log(results.businesses[i].url);
-              console.log(results.businesses[i].image_url);
-
-            // Creating a div for the result
-            var yelpDiv = $("<div>");
-            yelpDiv.addClass("col s12 m12 l6 card grey lighten-5");
-            
-            // Storing the result item's rating
-            var name = results.businesses[i].name;
-            var nameDiv = $("<div>");
-            nameDiv.addClass("card-title center-align");
-            nameDiv.text(name)
-            // location
-            var location = results.businesses[i].location.display_address[0];
-            var location2 = results.businesses[i].location.display_address[1]
-            var locationDiv = $("<p>");
-            locationDiv.addClass("center-align");
-            locationDiv.text(location +" "+ location2);           
-            console.log(location,location2);
-            
-            //price
-            var price = results.businesses[i].price;
-            var priceDiv = $("<div>");
-            priceDiv.addClass("center-align");
-            priceDiv.text(price)
-            // business url
-            var url = results.businesses[i].url;
-            //image
-            var img = results.businesses[i].image_url;
-
-           // Creating an image tag
-            var info = name + price + location;
-
-            var yelpLink = $("<a>");
-            yelpLink.attr("href", url);
-            // yelpLink.addClass("card green");
-
-            var yelpResult = $("<img width='75%' height='200px'>");
-            yelpResult.addClass("img");
-          //    // Giving the image tag an src attribute of a proprty pulled off the
-            yelpResult.attr("src", results.businesses[i].image_url);           
-            yelpLink.append(yelpResult)
-            // Appending the paragraph and gifResult we created to the "gifDiv" div we created
-            yelpDiv.append(yelpLink);
-            yelpDiv.append(nameDiv)
-            yelpDiv.append(priceDiv)
-            yelpDiv.append(locationDiv)
-
-
-            $("#displayHere1").append(yelpDiv);
-      }
-
-  });      
-};
- 
+particlesJS("particles-js2", {"particles":{"number":{"value":580,"density":{"enable":true,"value_area":800}},"color":{"value":"#dd2828"},"shape":{"type":"circle","stroke":{"width":0,"color":"#dd2828"},"polygon":{"nb_sides":5},"image":{"src":"img/github.svg","width":100,"height":100}},"opacity":{"value":0.5,"random":false,"anim":{"enable":false,"speed":1,"opacity_min":0.1,"sync":false}},"size":{"value":3,"random":true,"anim":{"enable":false,"speed":40,"size_min":0.1,"sync":false}},"line_linked":{"enable":true,"distance":150,"color":"#dd2828","opacity":0.4,"width":1},"move":{"enable":true,"speed":6,"direction":"none","random":false,"straight":false,"out_mode":"out","bounce":false,"attract":{"enable":false,"rotateX":600,"rotateY":1200}}},"interactivity":{"detect_on":"canvas","events":{"onhover":{"enable":true,"mode":"grab"},"onclick":{"enable":true,"mode":"push"},"resize":true},"modes":{"grab":{"distance":400,"line_linked":{"opacity":1}},"bubble":{"distance":400,"size":40,"duration":2,"opacity":8,"speed":3},"repulse":{"distance":200,"duration":0.4},"push":{"particles_nb":4},"remove":{"particles_nb":2}}},"retina_detect":true});
+var count_particles, stats, update; stats = new Stats; stats.setMode(0); stats.domElement.style.position = 'absolute'; stats.domElement.style.left = '0px'; stats.domElement.style.top = '0px';
+//  document.body.appendChild(stats.domElement); 
+ count_particles = document.querySelector('.js-count-particles'); 
+update = function() { stats.begin(); stats.end(); if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) { count_particles.innerText = window.pJSDom[0].pJS.particles.array.length; } 
+requestAnimationFrame(update); }; 
+// requestAnimationFrame(update);;

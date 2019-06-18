@@ -11,10 +11,62 @@
     height: 100vh;
     background-size: cover;
 } */
+/* begin particle.js css elements */
+.count-particles{ 
+    background: #6262ca;
+    position: absolute; 
+    top: 48px; left: 0; 
+    width: 80px; color: #13E8E9; 
+    font-size: .8em; text-align: left; 
+    text-indent: 4px; line-height: 14px;
+     padding-bottom: 2px; 
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; 
+    font-weight: bold; 
+} 
+.js-count-particles{ font-size: 1.1em; 
+} 
+#stats, .count-particles{ -webkit-user-select: none; margin-top: 5px; 
+    margin-left: 5px;
+    display: none; 
+}
+ #stats{ border-radius: 3px 3px 0 0; overflow: hidden;
+ } 
+.count-particles{ border-radius: 0 0 3px 3px; 
+}
 
-h5{
+
+
+#searchBTN { 
+    background-color: rgb(8, 5, 5);
+    border-color: orangered;
+    color: white;
+    font-family: 'B612 Mono', monospace;
+}
+
+#searchBTN:hover {
+    border-color: rgb(237, 240, 243);
+}
+#searchP{
+    overflow: hidden;
+}
+
+#particles-js{
+    height: 40px;
+    width: 250px;
+    background-color: rgb(5, 5, 5);
 
 }
+
+#particles-js2{
+    height: 40px;
+    width: 250px;
+    background-color: rgb(12, 12, 11);
+
+}
+
+/* end particle.js css elements */
+
+
 
 /* This is not currently being used ... 
 need to figure out how to darken the image, so the text stands out */
