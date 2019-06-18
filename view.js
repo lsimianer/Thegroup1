@@ -79,10 +79,22 @@ database.ref().orderByChild("dateAdded").on("child_added", function (snapshot){
             nameDiv.text(name)
             // location
             var location = results.businesses[i].location.display_address[0];
-            var location2 = results.businesses[i].location.display_address[1]
-            var locationDiv = $("<p>");
+            var location2 = results.businesses[i].location.display_address[1];
+            var locationDiv = $("<div>");
+            // locationDiv.append( src="assets/images/Yelp-Trademark.png");
             locationDiv.addClass("center-align");
-            locationDiv.text(location +" "+ location2);           
+            console.log("HELLO");
+            console.log(location, location2)
+            locationDiv.html(location +" "+ location2);  
+
+            var yelpLogoDiv = $("<div>");
+            yelpLogoDiv.addClass("center-align");
+            yelpLogoDiv.html("<a href=https://yelp.com/>"+" <img width=60 src=https://i.ibb.co/3zvxgFD/Yelp-trademark-RGB.png>"+" </a>"); 
+            // yelpLogoDiv.attr("href","https://www.yelp.com/");
+
+
+
+
             console.log(location,location2);
             
             //price
@@ -91,6 +103,7 @@ database.ref().orderByChild("dateAdded").on("child_added", function (snapshot){
             priceDiv.addClass("card-title center-align");
             priceDiv.text(price)
             priceDiv.append(nameDiv);
+
             // business url
             var url = results.businesses[i].url;
             //image
@@ -110,12 +123,12 @@ database.ref().orderByChild("dateAdded").on("child_added", function (snapshot){
             yelpLink.append(yelpResult)
             // Appending the paragraph and gifResult we created to the "gifDiv" div we created
             yelpDiv.append(yelpLink);
-            yelpDiv.append(nameDiv)
-            yelpDiv.append(priceDiv)
-            yelpDiv.append(locationDiv)
+            yelpDiv.append(nameDiv);
+            yelpDiv.append(priceDiv);
+            yelpDiv.append(locationDiv);
+            yelpDiv.append(yelpLogoDiv);
   
-  
-              $("#YelpResultsDisplay").append(yelpDiv);
+            $("#YelpResultsDisplay").append(yelpDiv);
         }
   
     });      
