@@ -36,13 +36,16 @@ database.ref().orderByChild("dateAdded").on("child_added", function (snapshot){
   
   var api ="https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=";
   var place = $('#place');
-  var peice = "&location=";
+  var peice = "&limit=6&location=";
   var city = $('#city');    
   
     $("#YelpSubmit").on("click",queryAPI1);
   
   function queryAPI1(){
+    $("#YelpResultsDisplay").empty();
+
     event.preventDefault();
+
   
     var url = api + place.val() + peice + city.val();
       $.ajax({
@@ -86,8 +89,9 @@ database.ref().orderByChild("dateAdded").on("child_added", function (snapshot){
             //price
             var price = results.businesses[i].price;
             var priceDiv = $("<div>");
-            priceDiv.addClass("center-align");
+            priceDiv.addClass("card-title center-align");
             priceDiv.text(price)
+            priceDiv.append(nameDiv);
             // business url
             var url = results.businesses[i].url;
             //image
