@@ -41,6 +41,7 @@
     border-color: orangered;
     color: white;
     font-family: 'B612 Mono', monospace;
+    border-radius: 13px;
 }
 
 #searchBTN:hover {
