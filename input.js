@@ -15,7 +15,7 @@ var time = moment().format('MMM DD HH:MM');
 
 // on click prevent default && establish vars relationship to input field for push to firebase.
 $("#submit").on("click",function(event){
-    event.preventDefault();
+  event.preventDefault();
 
    var firstName = $("#Name").val().trim();
     var GithubName = $("#GithubName").val().trim();
@@ -33,6 +33,12 @@ $("#submit").on("click",function(event){
         Email: Email,
         dateAdded: firebase.database.ServerValue.TIMESTAMP
     })
+    $("#Name").val("");
+   $("#GithubName").val("");
+   $("#where").val("");
+   $("#startTime").val("");
+   $("#endTime").val("");
+   $("#email").val("");
 });
 
 // append the table with firebase data
