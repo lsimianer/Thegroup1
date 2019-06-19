@@ -82,7 +82,12 @@
 
 /* end particle.js css elements */
 
+#mainText:hover {
+    background-color: rgba(255, 68, 0, 0.486);
+    border-radius: 12px;
+    
 
+}
 
 /* This is not currently being used ... 
 need to figure out how to darken the image, so the text stands out */
