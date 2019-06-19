@@ -12,6 +12,8 @@ firebase.initializeApp(firebaseConfig);
 var database = firebase.database();
 //format time from ms to desired look
 var time = moment().format('MMM DD HH:MM'); 
+// disable submission
+
 
 // on click prevent default && establish vars relationship to input field for push to firebase.
 $("#submit").on("click",function(event){
@@ -19,12 +21,18 @@ $("#submit").on("click",function(event){
 
   // if statemnt for valid inputs to allow submit
 
-   var firstName = $("#Name").val().trim();
+    var firstName = $("#Name").val().trim();
     var GithubName = $("#GithubName").val().trim();
     var Where = $("#where").val().trim();
     var StartTime = $("#startTime").val().trim();
     var EndTime = $("#endTime").val().trim();
-     var Email = $("#email").val().trim();
+    var Email = $("#email").val().trim();
+
+    var x = document.forms["input"].value;
+    if (x == "") {
+      return false;
+    }
+
 
     database.ref().push({
         Name: firstName,
