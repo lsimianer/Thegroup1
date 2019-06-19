@@ -37,11 +37,15 @@
 
 
 #searchBTN { 
-    background-color: rgb(8, 5, 5);
+    background-color: black;
     border-color: orangered;
     color: white;
     font-family: 'B612 Mono', monospace;
     border-radius: 13px;
+    margin-right: 15px;
+    /* flex-direction: column;
+    align-items: center; */
+
 }
 
 #searchBTN:hover {
@@ -50,16 +54,20 @@
 }
 
 #searchBTN2 { 
-    background-color: rgb(8, 5, 5);
+    background-color: black;
     border-color: orangered;
     color: white;
     font-family: 'B612 Mono', monospace;
     border-radius: 13px;
+    /* margin-right: 5px; */
 }
+
 
 #searchBTN2:hover {
     border-color: rgb(237, 240, 243);
     color: orangered;
+    /* margin-left: 5px; */
+
 }
 
 #searchP{
@@ -69,14 +77,22 @@
 #particles-js{
     height: 40px;
     width: 250px;
-    background-color: rgb(5, 5, 5);
-
+    background-color: black;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #particles-js2{
     height: 40px;
     width: 250px;
-    background-color: rgb(12, 12, 11);
+    background-color: black;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
 
 }
 
