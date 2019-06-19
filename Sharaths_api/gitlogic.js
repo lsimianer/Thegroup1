@@ -1,8 +1,4 @@
 
-
-
-
-
     $("#submit2").on("click", function (event) {
         event.preventDefault();
         var name = $("#input2").val().trim();
@@ -51,9 +47,11 @@
                 console.log("User not found");
                 var errorTag = $("<p>").text("User not found");
                 $("#displayHere2").append(errorTag);
-            }
+            } 
         
+        }, function (errObj) {
+            if (errObj.status === 404) {
+                $("#displayHere2").text("User not found");
+            }
         });
-
     });
-
