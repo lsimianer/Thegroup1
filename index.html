@@ -10,7 +10,7 @@
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <!-- Materialize -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <!-- CSS -->
     <link href="style.css" type="text/css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -22,6 +22,7 @@
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Teko&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=B612+Mono&display=swap" rel="stylesheet">
       <!-- Firebase References -->
     <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script>
@@ -34,8 +35,7 @@
 <!-- Nav Bar -->
 <nav class="nav-extended">
     <div class="nav-wrapper orange darken-4">
-
-      <a href="index.html" class="brand-logo"><img src="assets/images/white-logo.png" height="60px" ></a>
+      <a href="index.html" class="brand-logo"><img id="logo" src="assets/images/white-logo.png" height="60px" ></a>
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="input.html">Create Event</a></li>
@@ -74,14 +74,47 @@
             <div class="container">
                 <h5 id="mainText" class="center" style="color: white;" >Interested in meeting other web developers in an informal setting? DevNet is here to help. We provide you with the ability to either create a hangout to meet and work with other developers in the area or join an existing hangout at a local spot. Our search feature allows you to access information about each location as well as other developers. Get started now by searching for an existing event or create one of your own below!</h5>
                 <div class="center-align">
-                    <a class="waves-effect orange darken-4 white-text btn" href="view.html" id=""</a>Search</a>
-                    <a class="waves-effect orange darken-4 white-text btn" href ="input.html" id="">Create</a>
+
+                  <button onclick="window.location.href = 'view.html';"  class="center-align"  id="searchBTN">
+                      <div id="particles-js"></div>
+                      <!-- stats - count particles --> 
+                     <!-- <div class="count-particles"> <span class="js-count-particles">--</span>  </div>  -->
+                     <!-- particles.js lib - https://github.com/VincentGarreau/particles.js  -->
+                     <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>  
+                     <script src="http://threejs.org/examples/js/libs/stats.min.js"></script> 
+                      Search Events
+                  </button>
+
+                  <button onclick="window.location.href = 'input.html';"   class="center-align"  id="searchBTN2">
+                      <div id="particles-js2"></div>
+                      <!-- stats - count particles --> 
+                     <!-- <div class="count-particles"> <span class="js-count-particles">--</span>  </div>  -->
+                     <!-- particles.js lib - https://github.com/VincentGarreau/particles.js  -->
+                     <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>  
+                     <script src="http://threejs.org/examples/js/libs/stats.min.js"></script> 
+                      Create
+                  </button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <!-- <a class="waves-effect  white-text btn" href="view.html" id=""</a>Search</a> -->
+                    <!-- <a class="waves-effect  white-text btn" href ="input.html" id="">Create</a> -->
                 </div>
             </div>
         </div>  
     </div>
 
 
-<!-- Luke's Code (keep for now) -->
+  <script src="app.js" type="text/javascript" ></script>
 </body>
 </html>

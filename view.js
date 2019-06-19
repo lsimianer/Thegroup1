@@ -160,6 +160,8 @@ database.ref().orderByChild("dateAdded").on("child_added", function (snapshot){
         console.log(response);
         console.log(response.html_url);
         console.log()
+
+        // create result area
         try {
             var userNameTag = $("<p>").text("Username:" +response.login);
             var imgTag = $("<img>").attr("src", response.avatar_url);
