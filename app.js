@@ -1,35 +1,6 @@
 
-
-
-
-//on click query api 1
-// $(document).on('click', '#submit1',queryAPI1);
-
-
-// // get input from the input field
-// var inputText = document.getElementById('input1').value;
-
-
-// // create vars to hold our API 1components urly, key, inputs
-// var ap1 =" ";
-
-// var apiKey1 ="sEEutzNCLWpppnBUy2apjP89foA67xbSdcu7gQyBI74kZE6eEmrME7_VzyaArAEv7OUUljz0mFCQUBCgwypzmhoCXeS46aMFHy97WyJ5i2ABWf9g5K7wpeHPZY4CXXYx";
-
-// var yelpClientIdKey = "CsFSQ8tDmgtOESdPPnYaaA";
-// // if any 
-// var lims1 = " ";
-
-// function queryAPI1(){
-// var place = $('#place');
-// var city = $('#city');    
-// var myurl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term="+ place.val() +"&location="+ city.val();
-// var field = $('#displayHere1');
-
-
-// $("#YelpSubmit").on("click",function(event){
-//   event.preventDefault();}
 $( document ).ready(function() {
-  console.log( "ready!" );
+  console.log( "ready captain!" );
 });
 
 
@@ -49,4 +20,3 @@ update = function() { stats.begin(); stats.end(); if (window.pJSDom[0].pJS.parti
 requestAnimationFrame(update); }; 
 // requestAnimationFrame(update);;
 
-// $("#searchBTN").on('click',)
