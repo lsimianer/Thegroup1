@@ -163,18 +163,32 @@ database.ref().orderByChild("dateAdded").on("child_added", function (snapshot){
 
         // create result area
         try {
-            var userNameTag = $("<p>").text("Username:" +response.login);
-            var imgTag = $("<img>").attr("src", response.avatar_url);
-            var viewProfileTag = $("<a>").attr("href", response.html_url).text("View Profile");
-            var nameTag = $("<p>").text("Name: " +response.name);
-            var followersTag = $("<p>").text("Followers: " +response.followers);
-            console.log("Followers:", response.followers);
-            var followingTag = $("<p>").text("Following: " +response.following);
-            console.log("Following:", response.following);
-            var repoTag = $("<p>").text("Repos:" +response.public_repos);
-            console.log(response.public_repos);
-            console.log(response.name);
-            $("#GithubResultsDisplay").append(userNameTag, nameTag, imgTag, nameTag, viewProfileTag, followersTag, followingTag, repoTag);
+             // Creates card div
+          var mainDiv = $("<div>");
+          mainDiv.addClass("col s12 l6 card grey lighten-5");
+          // Creates a div for the image
+          var imgFloat = $("<div>");
+          imgFloat.addClass("center-align");
+          var imgTag = $("<img>").attr("src", response.avatar_url);
+          imgTag.attr("width", "30%");
+          imgTag.attr("max-height", "200px");
+          imgFloat.append(imgTag);
+          // Creates a div for the text content
+          var textFloat = $("<div>");
+          textFloat.addClass("center-align");
+          var userNameTag = $("<h5>").text("Github username: " +response.login);
+          var viewProfileTag = $("<a>").attr("href", response.html_url).text("View Profile");
+          var nameTag = $("<p>").text("Name: " +response.name);
+          var followersTag = $("<p>").text("Followers: " +response.followers);
+          console.log("Followers:", response.followers);
+          var followingTag = $("<p>").text("Following: " +response.following);
+          console.log("Following:", response.following);
+          var repoTag = $("<p>").text("Repos:" +response.public_repos);
+          console.log(response.public_repos);
+          console.log(response.name);
+          textFloat.append(userNameTag, viewProfileTag, nameTag, followersTag, followingTag, repoTag)
+          mainDiv.append(imgFloat, textFloat);
+          $("#GithubResultsDisplay").append(mainDiv);
         }
         catch (e) {
             console.log(e);

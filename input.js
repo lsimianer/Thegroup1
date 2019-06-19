@@ -17,6 +17,8 @@ var time = moment().format('MMM DD HH:MM');
 $("#submit").on("click",function(event){
   event.preventDefault();
 
+  // if statemnt for valid inputs to allow submit
+
    var firstName = $("#Name").val().trim();
     var GithubName = $("#GithubName").val().trim();
     var Where = $("#where").val().trim();
@@ -33,6 +35,8 @@ $("#submit").on("click",function(event){
         Email: Email,
         dateAdded: firebase.database.ServerValue.TIMESTAMP
     })
+
+    // move to sep fx
     $("#Name").val("");
    $("#GithubName").val("");
    $("#where").val("");
