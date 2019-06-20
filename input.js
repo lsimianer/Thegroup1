@@ -12,11 +12,10 @@ firebase.initializeApp(firebaseConfig);
 var database = firebase.database();
 //format time from ms to desired look
 var time = moment().format('MMM DD HH:MM'); 
-// on click prevent default && establish vars relationship to input field for push to firebase.
-$("#submit").on("click",function(event){
-event.preventDefault();
 
-// if statemnt for valid inputs to allow submit
+// on click prevent default && establish vars relationship to input field for push to firebase.
+$("#submit").on("click",function(event){  
+event.preventDefault();
 
   var firstName = $("#Name").val().trim();
   var GithubName = $("#GithubName").val().trim();
@@ -25,19 +24,14 @@ event.preventDefault();
   var EndTime = $("#endTime").val().trim();
   var Email = $("#email").val().trim();
 
-  var x = document.forms["input"].value;
-  if (x == "") {
-    return false;
-  }
-
-  database.ref().push({
+    database.ref().push({
       Name: firstName,
       githubName: GithubName,
       Where: Where,
       StartTime: StartTime,
       EndTime: EndTime,
       Email: Email,
-      dateAdded: firebase.database.ServerValue.TIMESTAMP
+      dateAdded: firebase.database.ServerValue.TIMESTAMP,      
   })
   // move to sep fx
   $("#Name").val("");
