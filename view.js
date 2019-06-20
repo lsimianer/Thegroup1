@@ -11,18 +11,14 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 var database = firebase.database();
 var time = moment().format('MMM DD HH:MM'); 
-
 // begin yelp api js
 $( document ).ready(function() {
     console.log( "ready!" );
   });
-
   // begin firebase js
 // pull from firebase to build td
 database.ref().orderByChild("dateAdded").on("child_added", function (snapshot){
-  console.log(snapshot.child());
-    
-      
+  console.log(snapshot.child());      
     $("tbody").append("<tr><td>" + 
       snapshot.val().Name + "</td>" + "<td>" + 
       snapshot.val().githubName + "</td>" + "<td>" + 
@@ -31,20 +27,17 @@ database.ref().orderByChild("dateAdded").on("child_added", function (snapshot){
       snapshot.val().EndTime + "</td>" + "<td>"+
       snapshot.val().Email + "</td>" +                    
       "<td>"+ time + "</td>");
-  });
-  
+  });  
   
   var api ="https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=";
   var place = $('#place');
   var peice = "&limit=6&location=";
   var city = $('#city');    
   
-    $("#YelpSubmit").on("click",queryAPI1);
-  
+    $("#YelpSubmit").on("click",queryAPI1);  
   function queryAPI1(){
     $("#YelpResultsDisplay").empty();
     event.preventDefault();
-
   
     var url = api + place.val() + peice + city.val();
       $.ajax({
@@ -57,9 +50,7 @@ database.ref().orderByChild("dateAdded").on("child_added", function (snapshot){
         }).then(function(response) {
           var results = response;
           console.log(response);
-          console.log(url);
-          
-  
+          console.log(url);    
             //  $("#results").append(JSON.stringify(field));
             for (var i = 0; i < results.businesses.length; i++) { 
               console.log(results.businesses[i].name);
@@ -67,11 +58,9 @@ database.ref().orderByChild("dateAdded").on("child_added", function (snapshot){
               console.log(results.businesses[i].price);
               console.log(results.businesses[i].url);
               console.log(results.businesses[i].image_url);
-
             // Creating a div for the result
             var yelpDiv = $("<div>");
-            yelpDiv.addClass("col s12 m12 l4 card medium grey lighten-5");
-            
+            yelpDiv.addClass("col s12 m12 l4 card medium grey lighten-5");            
             // Storing the result item's rating
             var name = results.businesses[i].name;
             var nameDiv = $("<div>");
@@ -93,56 +82,37 @@ database.ref().orderByChild("dateAdded").on("child_added", function (snapshot){
             yelpLogoDiv.addClass("center-align");
             yelpLogoDiv.html( "<img width=60 src=https://i.ibb.co/3zvxgFD/Yelp-trademark-RGB.png>"); 
             yelpLogoDiv.attr("href", url);
-
-
-
-
-            console.log(location,location2);
-            
+            console.log(location,location2);            
             //price
             var price = results.businesses[i].price;
             var priceDiv = $("<div>");
             priceDiv.addClass("card-title center-align");
             priceDiv.text(price)
             priceDiv.append(nameDiv);
-
             //image
             var img = results.businesses[i].image_url;
-
            // Creating an image tag
             var info = name + price + location;
-
             var yelpLink = $("<a>");
             yelpLink.attr("href", url+'target="_blank"');
             // yelpLink.addClass("card green");
-
             var yelpResult = $("<img width='100%' height='200px'>");
             yelpResult.addClass("img");
           //    // Giving the image tag an src attribute of a proprty pulled off the
             yelpResult.attr("src", results.businesses[i].image_url);           
             yelpLink.append(yelpResult);
             yelpLink.append(yelpLogoDiv);
-
             // Appending the paragraph and gifResult we created to the "gifDiv" div we created
             yelpDiv.append(yelpLink);
             yelpDiv.append(nameDiv);
             yelpDiv.append(priceDiv);
             yelpDiv.append(locationDiv);
-            // yelpDiv.append(yelpLogoDiv);
-  
+            // yelpDiv.append(yelpLogoDiv);  
             $("#YelpResultsDisplay").append(yelpDiv);
-        }
-  
+        }  
     });      
-  };
-  
+  };  
   //begin git api js
-
-  
-
-
-
-
   $("#YelpSubmit").on("click", function (event) {
     $("#GithubResultsDisplay").empty();
     event.preventDefault();
@@ -160,7 +130,6 @@ database.ref().orderByChild("dateAdded").on("child_added", function (snapshot){
         console.log(response);
         console.log(response.html_url);
         console.log()
-
         // create result area
         try {
              // Creates card div
@@ -195,10 +164,8 @@ database.ref().orderByChild("dateAdded").on("child_added", function (snapshot){
             console.log("User not found");
             var errorTag = $("<p>").text("User not found");
             $("#GithubResultsDisplay").append(errorTag);
-        }
-    
+        }    
     });
-
 });
 
 
